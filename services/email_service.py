@@ -1,13 +1,11 @@
 import os
 import resend
 
-from dotenv import load_dotenv
+from services.config import RESEND_API_KEY, RESEND_FROM_EMAIL
 
-load_dotenv()
+resend.api_key = RESEND_API_KEY
 
-resend.api_key = os.getenv("RESEND_API_KEY")
-
-FROM_EMAIL = os.getenv("RESEND_FROM_EMAIL")
+FROM_EMAIL = RESEND_FROM_EMAIL
 
 def send_email(
     recipient: str,

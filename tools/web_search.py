@@ -1,10 +1,8 @@
 import os
-from dotenv import load_dotenv
 from tavily import TavilyClient
+from services.config import TAVILY_API_KEY
 
-load_dotenv()
-
-api_key = os.getenv("TAVILY_API_KEY")
+api_key = TAVILY_API_KEY
 
 if not api_key:
     raise ValueError("TAVILY_API_KEY is missing")

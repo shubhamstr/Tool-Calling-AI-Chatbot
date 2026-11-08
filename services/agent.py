@@ -2,24 +2,22 @@ import os
 import json
 
 from openai import OpenAI
-from dotenv import load_dotenv
 
 from tools.web_search import web_search
 from tools.email_tools import prepare_email
 from services.tool_definitions import tools
+from services.config import OPENAI_API_KEY, OPENAI_MODEL
 
 
 # --------------------------------
 # Configuration
 # --------------------------------
 
-load_dotenv()
-
 client = OpenAI(
-    api_key=os.getenv("OPENAI_API_KEY")
+    api_key=OPENAI_API_KEY
 )
 
-MODEL = os.getenv("OPENAI_MODEL", "gpt-4.1-mini")
+MODEL = OPENAI_MODEL
 
 # --------------------------------
 # Available Python Functions
