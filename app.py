@@ -1,10 +1,11 @@
 import streamlit as st
+from services.llm import generate_response
 
 # Page configuration
 st.set_page_config(
     page_title="Tool Calling AI Chatbot",
-    page_icon="🤖",
-    layout="centered"
+    page_icon="🤖"
+    # layout="centered"
 )
 
 # Application title
@@ -35,14 +36,19 @@ if prompt := st.chat_input("Ask me anything..."):
     with st.chat_message("user"):
         st.markdown(prompt)
 
-    # Temporary response (we'll integrate AI later)
-    response = f"You said: {prompt}"
-
-    # Store assistant response
-    st.session_state.messages.append({
-        "role": "assistant",
-        "content": response
-    })
-
     with st.chat_message("assistant"):
-        st.markdown(response)
+        with st.spinner("Thinking..."):
+            try:
+                response = generate_response(
+                    st.session_state.messages
+                )
+
+                st.markdown(response)
+
+                st.session_state.messages.append({
+                    "role": "assistant",
+                    "content": response
+                })
+
+            except Exception as e:
+                st.error(f"Error: {e}")
