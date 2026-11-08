@@ -92,7 +92,6 @@ Tool-Calling-AI-Chatbot/
 │   ├── __init__.py
 │   ├── agent.py             # Agent runtime loop & function dispatcher
 │   ├── email_service.py     # Resend email API integration
-│   ├── llm.py               # Simple fallback LLM response generator
 │   └── tool_definitions.py  # Strict JSON schemas for OpenAI tools
 │
 └── tools/
