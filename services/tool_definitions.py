@@ -24,5 +24,34 @@ tools = [
             "additionalProperties": False
         },
         "strict": True
+    },
+    {
+        "type": "function",
+        "name": "prepare_email",
+        "description": (
+            "Prepare an email for the user to review. "
+            "Never send the email directly. "
+            "The user must confirm before sending."
+        ),
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "recipient": {
+                    "type": "string",
+                    "description": "Recipient email address"
+                },
+                "subject": {
+                    "type": "string",
+                    "description": "Email subject"
+                },
+                "body": {
+                    "type": "string",
+                    "description": "Email message body"
+                }
+            },
+            "required": ["recipient", "subject", "body"],
+            "additionalProperties": False
+        },
+        "strict": True
     }
 ]
