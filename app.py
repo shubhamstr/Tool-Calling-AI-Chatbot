@@ -1,5 +1,5 @@
 import streamlit as st
-from services.llm import generate_response
+from services.agent import run_agent
 
 # Page configuration
 st.set_page_config(
@@ -39,9 +39,7 @@ if prompt := st.chat_input("Ask me anything..."):
     with st.chat_message("assistant"):
         with st.spinner("Thinking..."):
             try:
-                response = generate_response(
-                    st.session_state.messages
-                )
+                response = run_agent(st.session_state.messages)
 
                 st.markdown(response)
 
